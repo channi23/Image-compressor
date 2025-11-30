@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageZip - Simple Image Compressor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ ImageZip</h1>
+            <p class="subtitle">Compress your images instantly - No upload, 100% private</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <p class="drop-text">Drop your image here or click to browse</p>
+                    <p class="file-types">Supports: JPG, PNG, WebP</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div class="controls" id="controls" style="display: none;">
+                <div class="compression-type">
+                    <label class="radio-card">
+                        <input type="radio" name="compressionType" value="lossy" checked>
+                        <div class="card-content">
+                            <h3>🎯 Lossy</h3>
+                            <p>Smaller file size, slight quality loss</p>
+                        </div>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="compressionType" value="lossless">
+                        <div class="card-content">
+                            <h3>💎 Lossless</h3>
+                            <p>Original quality, larger file size</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="quality-control" id="qualityControl">
+                    <label for="quality">Quality: <span id="qualityValue">80</span>%</label>
+                    <input type="range" id="quality" min="10" max="100" value="80" step="5">
+                </div>
+
+                <button class="btn-compress" id="compressBtn">Compress Image</button>
+            </div>
+
+            <div class="results" id="results" style="display: none;">
+                <div class="comparison">
+                    <div class="image-card">
+                        <h3>Original</h3>
+                        <img id="originalPreview" alt="Original">
+                        <p class="file-info">
+                            <span class="file-size" id="originalSize">-</span>
+                        </p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="image-card">
+                        <h3>Compressed</h3>
+                        <img id="compressedPreview" alt="Compressed">
+                        <p class="file-info">
+                            <span class="file-size" id="compressedSize">-</span>
+                            <span class="savings" id="savings">-</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-download" id="downloadBtn">Download Compressed Image</button>
+                    <button class="btn-reset" id="resetBtn">Compress Another</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>All processing happens in your browser. Your images never leave your device.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
